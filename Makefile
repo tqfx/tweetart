@@ -1,12 +1,12 @@
+CFLAGS := -std=c11 -Ofast -pedantic -Wall -Wextra
 SOURCES := $(wildcard [0-9]*.c)
-CFLAGS := -std=c11 -pedantic -Wall -Wextra
 ppm: $(subst .c,.ppm,$(SOURCES))
 png: $(subst .c,.png,$(SOURCES))
 jpg: $(subst .c,.jpg,$(SOURCES))
 gif: $(subst .c,.gif,$(SOURCES))
 .PHONY: clean
 clean:
-	$(RM) *.exe *.ppm *.png *.jpg
+	$(RM) $(shell cat .gitignore)
 %.exe: %.c
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 %.ppm: %.exe
